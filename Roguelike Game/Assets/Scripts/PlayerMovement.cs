@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Move(int h, int v)
     {
         PlayerPosition += new Coord(h, v);
+        CheckValidPosition(PlayerPosition);
         currentlyMoving = true;
         Debug.Log("Started Move to Position: " + PlayerPosition.ToString());
         while((PlayerPosition.AsV2 - rb.position).sqrMagnitude > 0.02)
@@ -43,5 +45,11 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Move Completed. PlayerPosition: " + PlayerPosition.ToString());
         yield return new WaitForSeconds(waitAfterMove);
         currentlyMoving = false;
+    }
+
+    private void CheckValidPosition(Coord playerPosition)
+    {
+        // Do stuff here. 
+
     }
 }
