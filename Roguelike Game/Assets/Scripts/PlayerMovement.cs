@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
     public float speed = 6f;
 
     Vector3 movement;
-    Rigidbody2D playerRigidbody;
+    Rigidbody2D rb;
+
 
     private void Awake()
     {
-        playerRigidbody = GetComponent<Rigidbody2D>();    
+        rb = GetComponent<Rigidbody2D>();    
     }
 
     private void FixedUpdate()
@@ -28,6 +29,6 @@ public class playerMovement : MonoBehaviour {
 
         movement = movement.normalized * speed * Time.deltaTime;
 
-        playerRigidbody.MovePosition(transform.position + movement);
+        rb.MovePosition(transform.position + movement);
     }
 }
