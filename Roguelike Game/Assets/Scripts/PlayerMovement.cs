@@ -26,20 +26,21 @@ public class PlayerMovement : MonoBehaviour
         int h = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
         int v = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
 
-        if (currentlyMoving == false && (Mathf.Abs(h) + Mathf.Abs(v)) == 1)
+        Coord movement = new Coord(h, v);
+
+        if (currentlyMoving == false && (Mathf.Abs(h) + Mathf.Abs(v)) == 1 && CheckValidPosition(rb.position + movement.AsV2))
             StartCoroutine(Move(h, v));
     }
 
     private IEnumerator Move(int h, int v)
     {
         PlayerPosition += new Coord(h, v);
-        CheckValidPosition(PlayerPosition);
         currentlyMoving = true;
         Debug.Log("Started Move to Position: " + PlayerPosition.ToString());
-        while((PlayerPosition.AsV2 - rb.position).sqrMagnitude > 0.02)
+        while ((PlayerPosition.AsV2 - rb.position).sqrMagnitude > 0.02)
         {
-            rb.MovePosition(rb.position + new Vector2(h, v) * speed * Time.deltaTime);
-            yield return null;
+             rb.MovePosition(rb.position + new Vector2(h, v) * speed * Time.deltaTime);
+             yield return null;
         }
         rb.MovePosition(PlayerPosition.AsV2);
         Debug.Log("Move Completed. PlayerPosition: " + PlayerPosition.ToString());
@@ -47,9 +48,13 @@ public class PlayerMovement : MonoBehaviour
         currentlyMoving = false;
     }
 
-    private void CheckValidPosition(Coord playerPosition)
+    private bool CheckValidPosition(Vector2 playerPosition)
     {
         // Do stuff here. 
-
+        if (Physics2D.OverlapBox(playerPosition, new Vector2(0.8f, 0.8f), 0f))
+        {
+            return false;
+        }
+        return true;
     }
 }
