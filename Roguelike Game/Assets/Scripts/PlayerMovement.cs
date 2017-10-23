@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         // Do stuff here. 
         if (Physics2D.OverlapBox(playerPosition, new Vector2(0.8f, 0.8f), 0f))
         {
+            Debug.Log("OverlapBox returned true");
             return false;
         }
         return true;
