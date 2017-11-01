@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// A layer mask used to determine if the player can move into a new tile.
     /// </summary>
-    public LayerMask PlayerMovementMask;
+    public LayerMask PlayerCollisionMask;
     /// <summary>
     /// The player's max speed
     /// </summary>
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     private bool CheckValidPosition(Vector2 playerPosition)
     {
         // Do stuff here. 
-        if (Physics2D.OverlapBox(playerPosition, new Vector2(0.8f, 0.8f), 0f, PlayerMovementMask))
+        if (Physics2D.OverlapBox(playerPosition, new Vector2(0.8f, 0.8f), 0f, PlayerCollisionMask))
         {
             Debug.Log("OverlapBox returned true");
             return false;
