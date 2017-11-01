@@ -3,15 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A component on the Player GameObject that moves the player using a 2D Rigidbody and Keyboard Input
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-
+    /// <summary>
+    /// The current player position as a coordinate. 
+    /// </summary>
     public Coord PlayerPosition { get; protected set; }
 
+    /// <summary>
+    /// A layer mask used to determine if the player can move into a new tile.
+    /// </summary>
+    public LayerMask PlayerMovementMask;
+    /// <summary>
+    /// The player's max speed
+    /// </summary>
     public float speed = 6f;
-    public float waitAfterMove = 0.01f;
+    /// <summary>
+    /// The amount of time to wait after a movement has been completed.
+    /// </summary>
+    public float waitAfterMove = 0.05f;
 
+    /// <summary>
+    /// A reference to the Rigidbody
+    /// </summary>
     private Rigidbody2D rb;
+    /// <summary>
+    /// Is the player currently moving? (i.e., is the moving animation currently playing?) Used to determine if the player can start a new move. 
+    /// </summary>
     private bool currentlyMoving;
 
 
@@ -32,6 +53,12 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Move(h, v));
     }
 
+    /// <summary>
+    /// A coroutine that moves a player with a animation
+    /// </summary>
+    /// <param name="h">The horizontal axis input</param>
+    /// <param name="v">The vertical axis input</param>
+    /// <returns>Next coroutine entry point</returns>
     private IEnumerator Move(int h, int v)
     {
         PlayerPosition += new Coord(h, v);
@@ -48,10 +75,15 @@ public class PlayerMovement : MonoBehaviour
         currentlyMoving = false;
     }
 
+    /// <summary>
+    /// Checks whether the player can move to a new position, or is blocked by something, like a wall. (Uses Physics)
+    /// </summary>
+    /// <param name="playerPosition"></param>
+    /// <returns>Whether the player can move into a new tile</returns>
     private bool CheckValidPosition(Vector2 playerPosition)
     {
         // Do stuff here. 
-        if (Physics2D.OverlapBox(playerPosition, new Vector2(0.8f, 0.8f), 0f))
+        if (Physics2D.OverlapBox(playerPosition, new Vector2(0.8f, 0.8f), 0f, PlayerMovementMask))
         {
             Debug.Log("OverlapBox returned true");
             return false;
