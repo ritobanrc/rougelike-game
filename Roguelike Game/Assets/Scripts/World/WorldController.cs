@@ -13,8 +13,10 @@ public class WorldController : MonoBehaviour
     /// </summary>
     public World World { get; protected set; }
 
+    public Texture2D LevelImage;
+
     private void Awake()
     {
-        
+        WorldImporter.ImportWorldFromLevelImage(LevelImage);
     }
 }
