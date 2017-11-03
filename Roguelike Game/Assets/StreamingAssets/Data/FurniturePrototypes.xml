@@ -1,0 +1,7 @@
+<FurniturePrototypes>
+  <Furniture name="Stone Wall">
+    <Graphics>
+      <Image src="stone-wall.png"></Image>
+    </Graphics>
+  </Furniture>
+</FurniturePrototypes>

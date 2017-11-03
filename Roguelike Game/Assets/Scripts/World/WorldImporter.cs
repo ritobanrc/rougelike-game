@@ -9,6 +9,7 @@ public class WorldImporter : MonoBehaviour
 {
     public static World ImportWorldFromLevelImage(Texture2D texture)
     {
+        Debug.Log("Importing World from " + texture.name);
         int width = texture.width;
         int height = texture.height;
         // Get the pixels. To avoid floating point drift, we get the colors as 32 bit integers instead of floats

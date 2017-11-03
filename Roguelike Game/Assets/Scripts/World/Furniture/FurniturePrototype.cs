@@ -8,5 +8,6 @@ using System.Text;
 /// </summary>
 public class FurniturePrototype
 {
+
 }
 
