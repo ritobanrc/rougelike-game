@@ -34,3 +34,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+
+Thumbs.db
+Thumbs.db.*
+*.db
+/Roguelike Game/Assets/Levels/Thumbs.db.meta

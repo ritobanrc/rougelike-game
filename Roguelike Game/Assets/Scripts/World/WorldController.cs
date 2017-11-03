@@ -12,4 +12,9 @@ public class WorldController : MonoBehaviour
     /// The whole world.
     /// </summary>
     public World World { get; protected set; }
+
+    private void Awake()
+    {
+        
+    }
 }
