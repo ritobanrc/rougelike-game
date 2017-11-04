@@ -5,8 +5,12 @@ using UnityEngine;
 /// <summary>
 /// Responsible for importing worlds. Now, that only means generating the world from a pre-defined level image. 
 /// </summary>
-public class WorldImporter : MonoBehaviour
+public static class WorldImporter 
 {
+
+    public static Dictionary<Color32, FurniturePrototype> lvlImageColorToFurniturePrototype { get; private set; }
+
+
     public static World ImportWorldFromLevelImage(Texture2D texture)
     {
         Debug.Log("Importing World from " + texture.name);

@@ -1,7 +1,10 @@
 <FurniturePrototypes>
   <Furniture name="Stone Wall">
+    <!--This is probably temporary while we are still using images to import levels-->
+    <LvlImgColor>#FF0000</LvlImgColor>
     <Graphics>
-      <Image src="stone-wall.png"></Image>
+      <ImagePath>sprites/furniture/stone-wall.png</ImagePath>
+      <!--Add other stuff here, like different sprites for different orinations, etc. -->
     </Graphics>
   </Furniture>
 </FurniturePrototypes>

@@ -8,5 +8,15 @@ using System.Text;
 /// </summary>
 public class Furniture
 {
+    public FurniturePrototype Prototype { get; protected set; }
+    public readonly Tile tile;
+
+    public Furniture(FurniturePrototype prototype, Tile tile)
+    {
+        Prototype = prototype;
+        this.tile = tile;
+    }
+
+    public string Name { get { return Prototype.Name; } }
 }
 
