@@ -14,31 +14,56 @@ public class InventoryItem
     /// </summary>
     public int stack { get; protected set; }
 
-    // Returns the item in the slot as a float
+    /// <summary>
+    /// Returns the item in this slot
+    /// </summary>
+    /// <returns></returns>
     public int itemAsi()
     {
         return this.item;
     }
 
-    // Returns the amount of items stacked
+    /// <summary>
+    /// Returns the amount of items stacked
+    /// </summary>
+    /// <returns></returns>
     public int stackAsi()
     {
-        return this.item;
+        return this.stack;
     }
 
+    /// <summary>
+    /// Adds an item to the stack
+    /// </summary>
+    /// <param name="amount"></param>
     public void AddToStack(int amount = 1)
     {
         this.stack += amount;
     }
 
-    public void RemoveFromStack(int amount = 1)
+    /// <summary>
+    /// Removes an item from the stack. If it is empty it returns true;
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public bool RemoveFromStack(int amount = 1)
     {
         this.stack -= amount;
+        if (this.stack == 0) return true; else return false;
     }
 
-    public InventoryItem (int item)
+    /// <summary>
+    /// Sets up the item when created;
+    /// </summary>
+    /// <param name="item"></param>
+    public InventoryItem (int item, int stack = 0)
     {
         this.item = item;
-        this.stack = 1;
+        this.stack = stack;
+    }
+
+    public void setItem(int item)
+    {
+        this.item = item;
     }
 }

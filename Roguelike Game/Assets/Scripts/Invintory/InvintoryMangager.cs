@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InvintoryMangager : MonoBehaviour {
+public class InvintoryMangager {
 
     /// <summary>
     /// List of the items in 
     /// </summary>
-    private List<InventoryItem> inventory = new List<InventoryItem>();
+    public InventoryItem[] inventory;
 
     /// <summary>
     /// Defines a size for the inventory
@@ -19,37 +19,102 @@ public class InvintoryMangager : MonoBehaviour {
     /// </summary>
     public int StackSize = 64;
 
-    public bool AddItem(int itemType, int itemNub = 1)
-    {   
+    /// <summary>
+    /// Sets up array
+    /// </summary>
+    public InvintoryMangager()
+    {
+        inventory = new InventoryItem[InventorySize];
         for (int i = 0; i < InventorySize; i++)
         {
-            if (inventory[i] != null)
+            inventory[i] = new InventoryItem(-1);
+        }
+    }
+
+    /// <summary>
+    /// returns the slot as int
+    /// </summary>
+    /// <returns></returns>
+    public int ItemAsInt(int place)
+    {
+        if (place >= InventorySize) place = InventorySize - 1;
+        return inventory[place].itemAsi();
+    }
+
+    public int StackAsInt(int place)
+    {
+        if (place >= InventorySize) place = InventorySize - 1;
+        return inventory[place].stackAsi();
+    }
+
+    /// <summary>
+    /// Adds an item to the inventory
+    /// </summary>
+    /// <param name="itemType"></param>
+    /// <param name="itemNub"></param>
+    /// <returns></returns>
+    public bool AddItem(int itemType, int itemNum = 1)
+    {
+            for (int i = 0; i < InventorySize; i++)
             {
-                if (inventory[i].itemAsi() == itemType)
+                if (inventory[i].itemAsi() != -1)
                 {
-                    if (inventory[i].stackAsi() < StackSize)
+                    if (inventory[i].itemAsi() == itemType)
                     {
-                        inventory[i].AddToStack(itemNub);
-                        return true;      
+                        if (inventory[i].stackAsi() + itemNum <= StackSize)
+                        {
+                            inventory[i].AddToStack(itemNum);
+                        }
                     }
                 }
-            } else break;
+            }
+        bool compleated = false;
+        while (!compleated)
+        {
+            int add = itemNum;
+            while (add > 64)
+            {
+                for (int i = 0; i < InventorySize; i++)
+                {
+                    if (inventory[i].itemAsi() == -1)
+                    {
+                        inventory[i].setItem(itemType);
+                        inventory[i].AddToStack(64);
+                        break;
+                    }
+                }
+                add -= 64;
+            }
+            for (int i = 0; i < InventorySize; i++)
+            {
+                if (inventory[i].itemAsi() == -1)
+                {
+                    inventory[i].setItem(itemType);
+                    inventory[i].AddToStack(add);
+                    return true;
+                }
+            }
         }
-        if (inventory.Count < InventorySize) return false;
-        inventory.Add(new InventoryItem(itemType));
-        return true;
+        return false;
     }
+
+    /// <summary>
+    /// Removes an item from the inventory
+    /// </summary>
+    /// <param name="itemType"></param>
+    /// <param name="itemNum"></param>
+    /// <returns></returns>
     public bool RemoveItem(int itemType, int itemNum = 1)
     {
         for (int i = 0; i < InventorySize; i++)
         {
-            if (inventory[i] != null)
+            if (inventory[i].itemAsi() != -1)
             {
                 if (inventory[i].itemAsi() == itemType)
                 {
                     if (inventory[i].stackAsi() < StackSize)
                     {
-                        inventory[i].RemoveFromStack(itemNum);
+                        if (inventory[i].RemoveFromStack(itemNum)) inventory[i] = null;
                         return true;
                     }
                 }
