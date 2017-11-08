@@ -65,11 +65,17 @@ public class InvintoryMangager
                 // the slot has the same itemtype
                 if (inventory[i].item == itemType)
                 {
-                    // And the this won't overflow the stack
-                    if (inventory[i].stackAsi() + itemNum <= StackSize)
+                    for (int n = itemNum; n > 0; n--)
                     {
-                        inventory[i].AddToStack(itemNum);
+                        if (inventory[i].stackAsi() + n <= StackSize)
+                        {
+                            inventory[i].AddToStack(n);
+                            itemNum -= n;
+                            if (itemNum == 0) return true;
+                        }
                     }
+                    // And the this won't overflow the stack
+                    
                 }
             }
         }
@@ -88,7 +94,7 @@ public class InvintoryMangager
                         break;
                     }
                 }
-                add -= InventorySize;
+                add -= StackSize;
             }
             for (int i = 0; i < InventorySize; i++)
             {

@@ -12,7 +12,8 @@ public class InventoryItemVisuals : MonoBehaviour
 
     private void Start()
     {
-        inventory.AddItem(1,248);
+        inventory.AddItem(1, 120);
+        inventory.AddItem(1, 52);
         inventory.AddItem(0, 32);
         for (int i = 0; i < 40; i++)
         {
