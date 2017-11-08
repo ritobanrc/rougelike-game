@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class InventoryItemVisuals : MonoBehaviour
 {
+    private bool pressed = false;
+
     private InvintoryMangager inventory = new InvintoryMangager();
     public Sprite[] sprites;
 
     private void Start()
     {
-        inventory.AddItem(1,72);
+        inventory.AddItem(1,248);
+        inventory.AddItem(0, 32);
         for (int i = 0; i < 40; i++)
         {
             this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = false;
@@ -30,14 +33,15 @@ public class InventoryItemVisuals : MonoBehaviour
                 if (inventory.StackAsInt(i) != 0) this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = true;
             }
         }
-    }
-
-    public void ShowItems()
-    {
-        for (int i = 0; i < 40; i++)
+        if (Input.GetAxisRaw("Inventory") == 1 && pressed == false)
         {
-            if (this.transform.GetChild(i).GetComponent<Image>().enabled == false) this.transform.GetChild(i).GetComponent<Image>().enabled = true; else this.transform.GetChild(i).GetComponent<Image>().enabled = false;
-            if (this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled == false && inventory.StackAsInt(i) != 0) this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = true; else this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = false;
+            for (int i = 0; i < 40; i++)
+            {
+                if (this.transform.GetChild(i).GetComponent<Image>().enabled == false) this.transform.GetChild(i).GetComponent<Image>().enabled = true; else this.transform.GetChild(i).GetComponent<Image>().enabled = false;
+                if (this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled == false && inventory.StackAsInt(i) != 0) this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = true; else this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = false;
+            }
+            pressed = true;
         }
+        else if (Input.GetAxisRaw("Inventory") == 0) pressed = false;
     }
 }

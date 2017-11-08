@@ -15,15 +15,6 @@ public class InventoryItem
     public int stack { get; protected set; }
 
     /// <summary>
-    /// Returns the item in this slot
-    /// </summary>
-    /// <returns></returns>
-    public int itemAsi()
-    {
-        return this.item;
-    }
-
-    /// <summary>
     /// Returns the amount of items stacked
     /// </summary>
     /// <returns></returns>

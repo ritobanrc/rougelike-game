@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InvintoryMangager {
+public class InvintoryMangager
+{
 
     /// <summary>
     /// List of the items in 
@@ -17,7 +18,7 @@ public class InvintoryMangager {
     /// <summary>
     /// Defines the size of the stack
     /// </summary>
-    public int StackSize = 64;
+    public int StackSize = 128;
 
     /// <summary>
     /// Sets up array
@@ -38,7 +39,7 @@ public class InvintoryMangager {
     public int ItemAsInt(int place)
     {
         if (place >= InventorySize) place = InventorySize - 1;
-        return inventory[place].itemAsi();
+        return inventory[place].item;
     }
 
     public int StackAsInt(int place)
@@ -55,39 +56,43 @@ public class InvintoryMangager {
     /// <returns></returns>
     public bool AddItem(int itemType, int itemNum = 1)
     {
-            for (int i = 0; i < InventorySize; i++)
+        // Searches through the entire inventory to see if there is a slot with the same items
+        for (int i = 0; i < InventorySize; i++)
+        {
+            // So if there already is an item in this slot (I think this is useless)s
+            if (inventory[i].item != -1)
             {
-                if (inventory[i].itemAsi() != -1)
+                // the slot has the same itemtype
+                if (inventory[i].item == itemType)
                 {
-                    if (inventory[i].itemAsi() == itemType)
+                    // And the this won't overflow the stack
+                    if (inventory[i].stackAsi() + itemNum <= StackSize)
                     {
-                        if (inventory[i].stackAsi() + itemNum <= StackSize)
-                        {
-                            inventory[i].AddToStack(itemNum);
-                        }
+                        inventory[i].AddToStack(itemNum);
                     }
                 }
             }
-        bool compleated = false;
-        while (!compleated)
+        }
+        bool completed = false;
+        while (!completed)
         {
             int add = itemNum;
-            while (add > 64)
+            while (add > StackSize)
             {
                 for (int i = 0; i < InventorySize; i++)
                 {
-                    if (inventory[i].itemAsi() == -1)
+                    if (inventory[i].item == -1)
                     {
                         inventory[i].setItem(itemType);
-                        inventory[i].AddToStack(64);
+                        inventory[i].AddToStack(StackSize);
                         break;
                     }
                 }
-                add -= 64;
+                add -= InventorySize;
             }
             for (int i = 0; i < InventorySize; i++)
             {
-                if (inventory[i].itemAsi() == -1)
+                if (inventory[i].item == -1)
                 {
                     inventory[i].setItem(itemType);
                     inventory[i].AddToStack(add);
@@ -108,9 +113,9 @@ public class InvintoryMangager {
     {
         for (int i = 0; i < InventorySize; i++)
         {
-            if (inventory[i].itemAsi() != -1)
+            if (inventory[i].item != -1)
             {
-                if (inventory[i].itemAsi() == itemType)
+                if (inventory[i].item == itemType)
                 {
                     if (inventory[i].stackAsi() < StackSize)
                     {
@@ -120,7 +125,7 @@ public class InvintoryMangager {
                 }
             }
             else break;
-            }
+        }
         return false;
     }
 }
