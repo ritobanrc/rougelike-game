@@ -19,6 +19,7 @@ public class InventoryItemVisuals : MonoBehaviour
         {
             this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = false;
             this.transform.GetChild(i).GetComponent<Image>().enabled = false;
+            this.transform.GetChild(i).GetComponent<InventoryItemButtonHandler>().slot = i;
         }
     }
 
@@ -44,5 +45,10 @@ public class InventoryItemVisuals : MonoBehaviour
             pressed = true;
         }
         else if (Input.GetAxisRaw("Inventory") == 0) pressed = false;
+    }
+    public void ItemClickedOn(int slot)
+    {
+        //TODO: Do something here
+        Debug.Log("Something was clicked on: " + slot.ToString());
     }
 }
