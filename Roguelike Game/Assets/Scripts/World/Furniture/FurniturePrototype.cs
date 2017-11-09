@@ -14,6 +14,8 @@ public class FurniturePrototype
     public string Name { get; protected set; }
     public string ImagePath { get; protected set; } // TODO: Complicate this.
     public Color32 LvlImgColor;
+    public bool hasCol;
+    public bool hasRb;
 
     public FurniturePrototype(string name, string imagePath)
     {

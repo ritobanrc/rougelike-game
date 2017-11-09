@@ -32,16 +32,20 @@ public class FurnitureController : Singleton<FurnitureController>
             /// TODO: This is not scalable! Is there a better way to do this?
             // For each furniture listed, get its information
             string name = xmlNode.Attributes["name"].Value;
-            // Furniture.Graphics.ImagePath - TODO: Handle more complicated graphics
-            string imagePath = xmlNode.SelectSingleNode("Graphics").SelectSingleNode("ImagePath").Value;
-            FurniturePrototype prototype = new FurniturePrototype(name, imagePath);
+            bool hasCol = xmlNode.Attributes["hasCol"].Value == "true";
+            bool hasRb = xmlNode.Attributes["hasRb"].Value == "true";
             Color lvlImageColor = Color.black;
-            ColorUtility.TryParseHtmlString(xmlNode.SelectSingleNode("LvlImgColor").Value, out lvlImageColor);
+            ColorUtility.TryParseHtmlString(xmlNode.SelectSingleNode("LvlImgColor").InnerText, out lvlImageColor);
             Color32 lvlImageColor32 = (Color32)lvlImageColor;
+            // Furniture.Graphics.ImagePath - TODO: Handle more complicated graphics
+            string imagePath = xmlNode.SelectSingleNode("Graphics").SelectSingleNode("ImagePath").InnerText;
+            FurniturePrototype prototype = new FurniturePrototype(name, imagePath);
             prototype.LvlImgColor = lvlImageColor32;
+            prototype.hasCol = hasCol;
+            prototype.hasRb = hasRb;
 
             FurniturePrototypes.Add(prototype);
-            WorldImporter.lvlImageColorToFurniturePrototype.Add(lvlImageColor32, prototype);
+            WorldImporter.FurnColorToProto.Add(lvlImageColor32, prototype);
         }
     }
 }

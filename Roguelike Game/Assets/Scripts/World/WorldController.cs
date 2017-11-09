@@ -17,6 +17,7 @@ public class WorldController : MonoBehaviour
 
     private void Awake()
     {
-        WorldImporter.ImportWorldFromLevelImage(LevelImage);
+        World = WorldImporter.ImportWorldFromLevelImage(LevelImage);
+        GetComponent<WorldGameObjectCreator>().CreateWorldGameObjects(World);
     }
 }
