@@ -75,7 +75,7 @@ public class InvintoryMangager
                         }
                     }
                     // And the this won't overflow the stack
-                    
+
                 }
             }
         }
@@ -133,5 +133,20 @@ public class InvintoryMangager
             else break;
         }
         return false;
+    }
+
+    public void RemoveItemFromSlot(int slot)
+    {
+        inventory[slot].RemoveFromStack();
+    }
+
+    public void SwitchSlots(int slotOne, int slotTwo)
+    {
+        InventoryItem placeholder = new InventoryItem(inventory[slotTwo].item, inventory[slotTwo].stack);
+        inventory[slotTwo].setItem(inventory[slotOne].item);
+        inventory[slotTwo].SetStack(inventory[slotOne].stack);
+        inventory[slotOne].setItem(placeholder.item);
+        inventory[slotOne].SetStack(placeholder.stack);
+        Debug.Log("SwitchSlots function run");
     }
 }
