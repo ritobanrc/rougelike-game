@@ -1,4 +1,4 @@
-﻿using System; 
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     /// The amount of time to wait after a movement has been completed.
     /// </summary>
     public float waitAfterMove = 0.05f;
+
     /// <summary>
     /// A reference to the Rigidbody
     /// </summary>
