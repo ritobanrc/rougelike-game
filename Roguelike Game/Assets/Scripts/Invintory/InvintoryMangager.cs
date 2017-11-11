@@ -134,4 +134,13 @@ public class InvintoryMangager
         }
         return false;
     }
+    public void SwitchSlots(int slotOne, int slotTwo)
+    {
+        InventoryItem placeholder = new InventoryItem(inventory[slotTwo].item, inventory[slotTwo].stack);
+        inventory[slotTwo].setItem(inventory[slotOne].item);
+        inventory[slotTwo].SetStack(inventory[slotOne].stack);
+        inventory[slotOne].setItem(placeholder.item);
+        inventory[slotOne].SetStack(placeholder.stack);
+        Debug.Log("SwitchSlots function run");
+    }
 }

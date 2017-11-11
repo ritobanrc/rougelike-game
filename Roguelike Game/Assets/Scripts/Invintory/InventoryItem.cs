@@ -14,6 +14,10 @@ public class InventoryItem
     /// </summary>
     public int stack { get; protected set; }
 
+    public void SetStack(int stackSize)
+    {
+        stack = stackSize;
+    }
     /// <summary>
     /// Returns the amount of items stacked
     /// </summary>
