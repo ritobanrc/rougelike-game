@@ -14,6 +14,10 @@ public class InventoryItem
     /// </summary>
     public int stack { get; protected set; }
 
+    public void SetStack(int stackSize)
+    {
+        stack = stackSize;
+    }
     /// <summary>
     /// Returns the amount of items stacked
     /// </summary>
@@ -39,7 +43,6 @@ public class InventoryItem
     /// <returns></returns>
     public bool RemoveFromStack(int amount = 1)
     {
-        if (this.stack == 0) return true;
         this.stack -= amount;
         if (this.stack == 0) return true; else return false;
     }
@@ -57,16 +60,5 @@ public class InventoryItem
     public void setItem(int item)
     {
         this.item = item;
-    }
-
-    public void Reset()
-    {
-        this.item = 0;
-        this.stack = 0;
-    }
-
-    public void SetStack(int stackSize)
-    {
-        stack = stackSize;
     }
 }

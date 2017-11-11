@@ -27,12 +27,6 @@ ExportedObj/
 *.svd
 *.pdb
 
-
-# Source control temp files
-*.orig
-# OS generated
-.DS_Store
-
 # Unity3D generated meta files
 *.pidb.meta
 
@@ -42,16 +36,3 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-
- 	
-# Include only the .meta files in specific folders
-*.meta
-!Assets/[Ee]ditor/**/*.meta
-!Assets/Editor Default Resources/**/*.meta
-!Assets/[Gg]izmos/**/*.meta
-!Assets/[Pp]refabs/**/*.meta
-!Assets/[Rr]esources/**/*.meta
-!Assets/[Ss]cenes/**/*.meta
-!Assets/[Ss]cripts/**/*.meta
-!Assets/Standard Assets/**/*.meta
-!Assets/StreamingAssets/**/*.meta 

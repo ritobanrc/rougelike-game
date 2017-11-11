@@ -75,7 +75,7 @@ public class InvintoryMangager
                         }
                     }
                     // And the this won't overflow the stack
-
+                    
                 }
             }
         }
@@ -134,12 +134,6 @@ public class InvintoryMangager
         }
         return false;
     }
-
-    public void RemoveItemFromSlot(int slot)
-    {
-        inventory[slot].RemoveFromStack();
-    }
-
     public void SwitchSlots(int slotOne, int slotTwo)
     {
         InventoryItem placeholder = new InventoryItem(inventory[slotTwo].item, inventory[slotTwo].stack);
