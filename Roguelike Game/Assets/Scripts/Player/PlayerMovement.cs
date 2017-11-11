@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private bool currentlyMoving;
 
+    private Vector2 velocity;
 
     private void Awake()
     {
@@ -49,7 +50,10 @@ public class PlayerMovement : MonoBehaviour
         Coord movement = new Coord(h, v);
 
         if (currentlyMoving == false && (Mathf.Abs(h) + Mathf.Abs(v)) == 1 && CheckValidPosition(rb.position + movement.AsV2))
+        {
             StartCoroutine(Move(h, v));
+            velocity = Vector2.zero;
+        }
     }
 
     /// <summary>
@@ -63,10 +67,10 @@ public class PlayerMovement : MonoBehaviour
         PlayerPosition += new Coord(h, v);
         currentlyMoving = true;
         Debug.Log("Started Move to Position: " + PlayerPosition.ToString());
-        while ((PlayerPosition.AsV2 - rb.position).sqrMagnitude > 0.02)
+        while ((PlayerPosition.AsV2 - rb.position).sqrMagnitude > 0.001)
         {
-             rb.MovePosition(rb.position + new Vector2(h, v) * speed * Time.deltaTime);
-             yield return null;
+            rb.MovePosition(Vector2.SmoothDamp(this.transform.position, PlayerPosition.AsV2, ref velocity, speed / 100, 10000000f, Time.deltaTime));
+            yield return null;
         }
         rb.MovePosition(PlayerPosition.AsV2);
         Debug.Log("Move Completed. PlayerPosition: " + PlayerPosition.ToString());
