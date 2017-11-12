@@ -7,6 +7,8 @@ public class InventoryItemVisuals : MonoBehaviour
 { 
     private bool pressed = false;
 
+    public bool chestOpen = false;
+
     private int slotSelected = -1;
 
     private InvintoryMangager inventory = new InvintoryMangager();
@@ -25,11 +27,20 @@ public class InventoryItemVisuals : MonoBehaviour
         }
     }
 
-    private void Update() 
+    public void Open()
     {
         for (int i = 0; i < 40; i++)
         {
-            if (this.transform.GetChild(i).GetComponent<Image>().enabled == true)
+            this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = true;
+            this.transform.GetChild(i).GetComponent<Image>().enabled = true;
+        }
+    }
+
+    private void Update() 
+    {
+        if (this.transform.GetChild(0).GetComponent<Image>().enabled == true)
+        {
+            for (int i = 0; i < 40; i++)
             {
                 this.transform.GetChild(i).GetComponent<Image>().sprite = sprites[inventory.ItemAsInt(i)+1];
                 this.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = (inventory.StackAsInt(i)).ToString();
@@ -48,7 +59,9 @@ public class InventoryItemVisuals : MonoBehaviour
         }
         else if (Input.GetAxisRaw("Inventory") == 0) pressed = false;
     }
-        public void ItemClickedOn(int slot)
+    public void ItemClickedOn(int slot)
+    {
+        if (!chestOpen)
         {
             Debug.Log("Item clicked on");
             if (slotSelected == -1)
@@ -64,5 +77,13 @@ public class InventoryItemVisuals : MonoBehaviour
                 slotSelected = -1;
                 Debug.Log("Slots switched");
             }
+        } else
+        {
+
         }
+    }
+    public void AddItem(int item, int stack)
+    {
+        inventory.AddItem(item, stack);
+    }
 }

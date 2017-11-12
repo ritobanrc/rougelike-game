@@ -33,4 +33,12 @@ public class InventoryVisualController : MonoBehaviour
         }
             else if (Input.GetAxisRaw("Inventory") == 0) pressed = false;
     }
+
+    public void Open()
+    {
+        for (int i = 0; i < 40; i++)
+        {
+            this.transform.GetChild(i).GetComponent<Image>().enabled = true;
+        }
+    }
 }

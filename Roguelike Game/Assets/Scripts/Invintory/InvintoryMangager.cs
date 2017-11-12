@@ -143,4 +143,10 @@ public class InvintoryMangager
         inventory[slotOne].SetStack(placeholder.stack);
         Debug.Log("SwitchSlots function run");
     }
+
+    public void ResetSlot(int slot)
+    {
+        inventory[slot].setItem(-1);
+        inventory[slot].SetStack(0);
+    }
 }
