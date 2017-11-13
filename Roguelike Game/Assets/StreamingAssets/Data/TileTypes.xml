@@ -1,0 +1,10 @@
+<TileTypes>
+  <TileType name="Default">
+    <LvlImageColor>#808080</LvlImageColor>
+    <Graphics>
+      <!--ImagePath is my temporary solution to finding the image. At the moment, it is being done by path so that modders can easily make changes. -->
+      <ImagePath>Sprites/Tiles/Default</ImagePath>
+    </Graphics>
+    <!--Other stuff about this type of tile. Idk, maybe walking speed/movement cost?-->
+  </TileType>
+</TileTypes>
