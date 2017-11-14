@@ -13,11 +13,12 @@ public class WorldController : MonoBehaviour
     /// </summary>
     public World World { get; protected set; }
 
-    public Texture2D LevelImage;
+    public Texture2D TileTypeMap;
+    public Texture2D FurnitureMap;
 
     private void Awake()
     {
-        World = WorldImporter.ImportWorldFromLevelImage(LevelImage);
+        World = WorldImporter.ImportWorldFromLevelImage(TileTypeMap, FurnitureMap);
         GetComponent<WorldGameObjectCreator>().CreateWorldGameObjects(World);
     }
 }

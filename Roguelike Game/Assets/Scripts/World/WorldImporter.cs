@@ -22,14 +22,17 @@ public static class WorldImporter
         }
     }
 
+    public static World ImportWorldFromLevelImage(Texture2D tileMap, Texture2D furnMap)
+    {
 
+    }
 
     /// <summary>
     /// This actually creates a new world and imports just the furniture. Sorry for the horrible naming. This is all mostly temporary anyway. See #4 and #6
     /// </summary>
     /// <param name="texture"></param>
     /// <returns></returns>
-    public static World ImportWorldFromLevelImage(Texture2D texture)
+    public static World ImportFurnitureForLevel(Texture2D texture)
     {
         int width = texture.width;
         int height = texture.height;

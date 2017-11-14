@@ -28,7 +28,7 @@ public class FurnitureController : Singleton<FurnitureController>
             throw new XmlException("How the actual f*ck did you manage to run this on Web/Mobile/Not Standalone?");
         xmlDoc.Load(filePath);
         foreach(XmlNode xmlNode in xmlDoc.DocumentElement)
-        {
+        {   
             /// TODO: This is not scalable! Is there a better way to do this?
             // For each furniture listed, get its information
             string name = xmlNode.Attributes["name"].Value;
