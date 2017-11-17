@@ -15,5 +15,6 @@ public class Items {
         stack[2] = 1;
         stack[3] = 1;
         stack[4] = 1;
+        return;
 	}
 }

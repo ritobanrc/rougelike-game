@@ -11,6 +11,7 @@ public class ChestItemController : MonoBehaviour
 
     private int slotSelected = -1;
 
+    private Items items = new Items();
     private InvintoryMangager[] inventory;
     public int chestAmount;
     public Sprite[] sprites;
@@ -25,7 +26,8 @@ public class ChestItemController : MonoBehaviour
             inventory[i] = new InvintoryMangager();
             for (int n = 0; n < Random.Range(0,40); n++)
             {
-                inventory[i].AddItem(Random.Range(0, 2), Random.Range(0, 128));
+                int type = Random.Range(0, 5);
+                inventory[i].AddItem(type, Random.Range(0, items.stack[type]));
             }
         }
         for (int i = 0; i < 40; i++)

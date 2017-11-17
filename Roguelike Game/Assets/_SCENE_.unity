@@ -10992,6 +10992,16 @@ Prefab:
       propertyPath: m_Name
       value: Image (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 224087214030818076, guid: 37945b0bf9322d644905b0538c396dbb,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 155.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224087214030818076, guid: 37945b0bf9322d644905b0538c396dbb,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -45.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37945b0bf9322d644905b0538c396dbb, type: 2}
   m_IsPrefabParent: 0
@@ -13992,6 +14002,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 454e9a92b9addc4408b36c38a44069e9, type: 3}
   - {fileID: 21300000, guid: 76b91ff5d0f22914dbae5c543304a394, type: 3}
   - {fileID: 21300000, guid: 51b9a00f63d4be140afe31a86a251553, type: 3}
+  - {fileID: 21300000, guid: 50a2f1c9c2cbcaa44a0cdb861df1e182, type: 3}
+  - {fileID: 21300000, guid: 218121325de88a942b9fa47535a6f2ad, type: 3}
+  - {fileID: 21300000, guid: 8ef571801693e094fb501e9909882115, type: 3}
 --- !u!1001 &1439146991
 Prefab:
   m_ObjectHideFlags: 0
@@ -15987,8 +16000,9 @@ MonoBehaviour:
   PlayerCollisionMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 6
+  speed: 1.72
   waitAfterMove: 0.05
+  currentlyMoving: 0
   moveable: 1
 --- !u!4 &1634234188
 Transform:
@@ -18350,6 +18364,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 454e9a92b9addc4408b36c38a44069e9, type: 3}
   - {fileID: 21300000, guid: 76b91ff5d0f22914dbae5c543304a394, type: 3}
   - {fileID: 21300000, guid: 51b9a00f63d4be140afe31a86a251553, type: 3}
+  - {fileID: 21300000, guid: 50a2f1c9c2cbcaa44a0cdb861df1e182, type: 3}
+  - {fileID: 21300000, guid: 218121325de88a942b9fa47535a6f2ad, type: 3}
+  - {fileID: 21300000, guid: 8ef571801693e094fb501e9909882115, type: 3}
 --- !u!114 &1834973960
 MonoBehaviour:
   m_ObjectHideFlags: 0
