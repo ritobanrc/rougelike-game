@@ -10,6 +10,8 @@ public class InvintoryMangager
     /// </summary>
     public InventoryItem[] inventory;
 
+    private Items items = new Items();
+
     /// <summary>
     /// Defines a size for the inventory
     /// </summary>
@@ -67,7 +69,7 @@ public class InvintoryMangager
                 {
                     for (int n = itemNum; n > 0; n--)
                     {
-                        if (inventory[i].stackAsi() + n <= StackSize)
+                        if (inventory[i].stackAsi() + n <= items.stack[itemType])
                         {
                             inventory[i].AddToStack(n);
                             itemNum -= n;
@@ -83,14 +85,14 @@ public class InvintoryMangager
         while (!completed)
         {
             int add = itemNum;
-            while (add > StackSize)
+            while (add > items.stack[itemType])
             {
                 for (int i = 0; i < InventorySize; i++)
                 {
                     if (inventory[i].item == -1)
                     {
                         inventory[i].setItem(itemType);
-                        inventory[i].AddToStack(StackSize);
+                        inventory[i].AddToStack(items.stack[itemType]);
                         break;
                     }
                 }
@@ -148,5 +150,10 @@ public class InvintoryMangager
     {
         inventory[slot].setItem(-1);
         inventory[slot].SetStack(0);
+    }
+    public void SetSlot(int type, int slot, int stack)
+    {
+        inventory[slot].setItem(type);
+        inventory[slot].SetStack(stack);
     }
 }

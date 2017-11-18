@@ -53,8 +53,18 @@ public class ChestItemController : MonoBehaviour
     }
     public void ItemClickedOn(int slot)
     {
-        inventoryItems.GetComponent<InventoryItemVisuals>().AddItem(inventory[chestOpened].ItemAsInt(slot), inventory[chestOpened].StackAsInt(slot));
-        inventory[chestOpened].ResetSlot(slot);
+        if (inventoryItems.GetComponent<InventoryItemVisuals>().slotSelected == -1 || inventory[chestOpened].ItemAsInt(slot) != -1)
+        {
+            inventoryItems.GetComponent<InventoryItemVisuals>().AddItem(inventory[chestOpened].ItemAsInt(slot), inventory[chestOpened].StackAsInt(slot));
+            inventory[chestOpened].ResetSlot(slot);
+        }
+        else
+        {
+            inventory[chestOpened].SetSlot(inventoryItems.GetComponent<InventoryItemVisuals>().inventory.ItemAsInt(inventoryItems.GetComponent<InventoryItemVisuals>().slotSelected), slot, inventoryItems.GetComponent<InventoryItemVisuals>().inventory.StackAsInt(inventoryItems.GetComponent<InventoryItemVisuals>().slotSelected));
+            inventoryItems.GetComponent<InventoryItemVisuals>().inventory.ResetSlot(inventoryItems.GetComponent<InventoryItemVisuals>().slotSelected);
+            inventoryItems.transform.GetChild(inventoryItems.GetComponent<InventoryItemVisuals>().slotSelected).GetComponent<Image>().color = new Color(1f, 1f, 1f);
+            inventoryItems.GetComponent<InventoryItemVisuals>().slotSelected = -1;
+        }
     }
     public void OpenChestItem(int chest)
     {

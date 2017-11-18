@@ -9,16 +9,13 @@ public class InventoryItemVisuals : MonoBehaviour
 
     public bool chestOpen = false;
 
-    private int slotSelected = -1;
+    public int slotSelected = -1;
 
-    private InvintoryMangager inventory = new InvintoryMangager();
+    public InvintoryMangager inventory = new InvintoryMangager();
     public Sprite[] sprites;
 
     private void Start()
     {
-        inventory.AddItem(1, 120);
-        inventory.AddItem(1, 52);
-        inventory.AddItem(0, 32);
         for (int i = 0; i < 40; i++)
         {
             this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = false;
@@ -71,7 +68,7 @@ public class InventoryItemVisuals : MonoBehaviour
                 Debug.Log("Slot Selected");
             }
             else
-            {
+            {  
                 this.transform.GetChild(slotSelected).GetComponent<Image>().color = new Color(1f, 1f, 1f);
                 inventory.SwitchSlots(slot, slotSelected);
                 slotSelected = -1;
@@ -85,5 +82,9 @@ public class InventoryItemVisuals : MonoBehaviour
     public void AddItem(int item, int stack)
     {
         inventory.AddItem(item, stack);
+    }
+    public void SetItem(int item, int slot, int stack)
+    {
+        inventory.SetSlot(item, slot, stack);
     }
 }
