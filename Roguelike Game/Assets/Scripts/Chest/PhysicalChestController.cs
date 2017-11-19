@@ -15,6 +15,8 @@ public class PhysicalChestController : MonoBehaviour
 
     public GameObject playerObject;
 
+    public GameObject CollectAllButton;
+
     public int chestNum = 0;
 
     private bool pressed = false;
@@ -26,6 +28,7 @@ public class PhysicalChestController : MonoBehaviour
         {
             chestGrid.GetComponent<ChestGridController>().openChestGrid();
             chestItems.GetComponent<ChestItemController>().OpenChestItem(chestNum);
+            CollectAllButton.GetComponent<CollectAll>().Open();
             if (chestGrid.transform.GetChild(0).GetComponent<Image>().enabled == true)
             {
                     inventoryGrid.GetComponent<InventoryVisualController>().Open();

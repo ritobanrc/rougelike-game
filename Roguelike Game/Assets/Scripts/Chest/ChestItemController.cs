@@ -76,4 +76,15 @@ public class ChestItemController : MonoBehaviour
             if (chestOpened == -1) this.transform.GetChild(i).GetChild(0).GetComponent<Text>().enabled = false;
         }
     }
+    public void CollectAll ()
+    {
+        for (int i = 0; i < 40; i++)
+        {
+            if (inventory[chestOpened].ItemAsInt(i) != -1)
+            {
+                inventoryItems.GetComponent<InventoryItemVisuals>().AddItem(inventory[chestOpened].ItemAsInt(i), inventory[chestOpened].StackAsInt(i));
+                inventory[chestOpened].ResetSlot(i);
+            }
+        }
+    }
 }

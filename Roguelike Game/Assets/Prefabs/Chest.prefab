@@ -80,7 +80,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestGrid: {fileID: 0}
   chestItems: {fileID: 0}
+  inventoryItems: {fileID: 0}
+  inventoryGrid: {fileID: 0}
   playerObject: {fileID: 0}
+  CollectAllButton: {fileID: 0}
   chestNum: 0
 --- !u!212 &212423984201199936
 SpriteRenderer:
