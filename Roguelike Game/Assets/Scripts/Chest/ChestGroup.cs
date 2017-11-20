@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class ChestGroup : MonoBehaviour
 {
+    /// <summary>
+    /// How many chests
+    /// </summary>
     public int childAmount = 0;
+
+    /// <summary>
+    /// Tell every chest which chest it is
+    /// </summary>
     private void Start()
     {
         for (int i = 0; i < childAmount; i++)

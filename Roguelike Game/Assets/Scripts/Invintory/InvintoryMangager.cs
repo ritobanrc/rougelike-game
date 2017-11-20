@@ -10,6 +10,9 @@ public class InvintoryMangager
     /// </summary>
     public InventoryItem[] inventory;
 
+    /// <summary>
+    /// List of items that has stack size and names
+    /// </summary>
     private Items items = new Items();
 
     /// <summary>
@@ -44,6 +47,11 @@ public class InvintoryMangager
         return inventory[place].item;
     }
 
+    /// <summary>
+    /// Returns stack and name
+    /// </summary>
+    /// <param name="place"></param>
+    /// <returns></returns>
     public int StackAsInt(int place)
     {
         if (place >= InventorySize) place = InventorySize - 1;
@@ -136,6 +144,12 @@ public class InvintoryMangager
         }
         return false;
     }
+
+    /// <summary>
+    /// Switches to slots
+    /// </summary>
+    /// <param name="slotOne"></param>
+    /// <param name="slotTwo"></param>
     public void SwitchSlots(int slotOne, int slotTwo)
     {
         InventoryItem placeholder = new InventoryItem(inventory[slotTwo].item, inventory[slotTwo].stack);
@@ -146,11 +160,22 @@ public class InvintoryMangager
         Debug.Log("SwitchSlots function run");
     }
 
+    /// <summary>
+    /// Sets a slot to item -1 And stack to 0
+    /// </summary>
+    /// <param name="slot"></param>
     public void ResetSlot(int slot)
     {
         inventory[slot].setItem(-1);
         inventory[slot].SetStack(0);
     }
+
+    /// <summary>
+    /// Sets slot to item and stack
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="slot"></param>
+    /// <param name="stack"></param>
     public void SetSlot(int type, int slot, int stack)
     {
         inventory[slot].setItem(type);

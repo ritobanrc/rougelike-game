@@ -57,6 +57,10 @@ public class InventoryItem
         this.stack = stack;
     }
 
+    /// <summary>
+    /// Sets the item of this data type
+    /// </summary>
+    /// <param name="item"></param>
     public void setItem(int item)
     {
         this.item = item;

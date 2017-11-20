@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class Items {
 
+    /// <summary>
+    /// Creates Enum with all names
+    /// </summary>
     public enum items { Steel, Gold, blueSword, redSword, purpleSword };
+
+    /// <summary>
+    /// Creates an array of stack sizes
+    /// </summary>
     public int[] stack;
 
-	// Use this for initialization
+    /// <summary>
+    /// Creats and Defines stack
+    /// </summary>
 	public Items () {
         stack = new int[6];
         stack[0] = 128;

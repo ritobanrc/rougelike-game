@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class ChestGridController : MonoBehaviour
 {
+    /// <summary>
+    /// When start make sure the grid is not showing
+    /// </summary>
     private void Start()
     {
         for (int i = 0; i < 40; i++)
@@ -13,6 +16,9 @@ public class ChestGridController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Open or Close the grid
+    /// </summary>
     public void openChestGrid ()
     {
         for (int i = 0; i < 40; i++)
