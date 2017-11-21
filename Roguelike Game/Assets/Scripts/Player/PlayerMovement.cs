@@ -32,7 +32,9 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Is the player currently moving? (i.e., is the moving animation currently playing?) Used to determine if the player can start a new move. 
     /// </summary>
-    private bool currentlyMoving;
+    public bool currentlyMoving;
+
+    public bool moveable = false;
 
     private Vector2 velocity;
 
@@ -49,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         Coord movement = new Coord(h, v);
 
-        if (currentlyMoving == false && (Mathf.Abs(h) + Mathf.Abs(v)) == 1 && CheckValidPosition(rb.position + movement.AsV2))
+        if (currentlyMoving == false && (Mathf.Abs(h) + Mathf.Abs(v)) == 1 && CheckValidPosition(rb.position + movement.AsV2) && moveable)
         {
             StartCoroutine(Move(h, v));
             velocity = Vector2.zero;

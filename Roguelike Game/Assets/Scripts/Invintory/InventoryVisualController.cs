@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class InventoryVisualController : MonoBehaviour
 {
+    /// <summary>
+    /// Bool that determines weather e was pressed already
+    /// </summary>
     private bool pressed = false;
     
     /// <summary>
@@ -32,5 +35,16 @@ public class InventoryVisualController : MonoBehaviour
             pressed = true;
         }
             else if (Input.GetAxisRaw("Inventory") == 0) pressed = false;
+    }
+
+    /// <summary>
+    /// Makes sure the images show
+    /// </summary>
+    public void Open()
+    {
+        for (int i = 0; i < 40; i++)
+        {
+            this.transform.GetChild(i).GetComponent<Image>().enabled = true;
+        }
     }
 }
