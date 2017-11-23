@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e321217d0263443bfc25f741b41dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TileTypesFileName: Data/TileTypes.xml
 --- !u!4 &1013710364
 Transform:
   m_ObjectHideFlags: 0
@@ -401,8 +402,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1688906944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 647, y: 364, z: 0}
-  m_LocalScale: {x: 0.67395836, y: 0.67395836, z: 0.67395836}
+  m_LocalPosition: {x: 607, y: 341.5, z: 0}
+  m_LocalScale: {x: 0.6322917, y: 0.6322917, z: 0.6322917}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -453,7 +454,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312664e43f4cf63449cd9c49730d34df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelImage: {fileID: 2800000, guid: 05a58d55c95b56c448ba8fe26d8cbd50, type: 3}
+  TileTypeMap: {fileID: 2800000, guid: eb8848520b821e54cb8f3dc265486392, type: 3}
+  FurnitureMap: {fileID: 2800000, guid: 05a58d55c95b56c448ba8fe26d8cbd50, type: 3}
 --- !u!114 &1888703587
 MonoBehaviour:
   m_ObjectHideFlags: 0

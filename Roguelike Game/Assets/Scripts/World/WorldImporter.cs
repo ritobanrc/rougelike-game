@@ -24,7 +24,7 @@ public static class WorldImporter
 
     public static World ImportWorldFromLevelImage(Texture2D tileMap, Texture2D furnMap)
     {
-
+        return ImportFurnitureForLevel(furnMap);
     }
 
     /// <summary>

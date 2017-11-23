@@ -14,7 +14,7 @@ public class TileTypesController : MonoBehaviour {
 
     private void Awake()
     {
-        ReadTileTypes();
+        //ReadTileTypes();
     }
 
     private void ReadTileTypes()
