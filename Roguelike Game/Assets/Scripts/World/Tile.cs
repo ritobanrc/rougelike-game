@@ -20,6 +20,10 @@ public class Tile
     /// </summary>
     public int Y { get { return Position.Y; } }
     /// <summary>
+    /// Furniture on Tile. 
+    /// </summary>
+    public Furniture Furniture; // Other classes can do whatever they want to the funiture we're carrying. 
+    /// <summary>
     /// Creates a new tile
     /// </summary>
     /// <param name="x">The X coordinate of the new tile</param>
