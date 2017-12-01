@@ -16,7 +16,7 @@ public class WorldController : MonoBehaviour
     public Texture2D TileTypeMap;
     public Texture2D FurnitureMap;
 
-    private void Awake()
+    private void Start()
     {
         World = WorldImporter.ImportWorldFromLevelImage(TileTypeMap, FurnitureMap);
         GetComponent<WorldGameObjectCreator>().CreateWorldGameObjects(World);

@@ -36,6 +36,7 @@ public class WorldGameObjectCreator : MonoBehaviour
                 // At the very least, move this into it's own function. But that's for future me. Present me is not sure how he's going to complete this massive reworking. Even though it's actually not that big. 
                 if(t.Furniture != null)
                 {
+                    //Debug.Log("Creating Furniture: " + t.Furniture.Name);
                     Sprite s = Resources.Load<Sprite>(t.Furniture.Prototype.ImagePath);
                     Debug.Log(t.Furniture.Prototype.ImagePath);
                     GameObject furnObj = Instantiate(EmptyFurniturePrefab, obj.transform, false);
