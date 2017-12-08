@@ -38,7 +38,7 @@ public class WorldGameObjectCreator : MonoBehaviour
                 {
                     //Debug.Log("Creating Furniture: " + t.Furniture.Name);
                     Sprite s = Resources.Load<Sprite>(t.Furniture.Prototype.ImagePath);
-                    Debug.Log(t.Furniture.Prototype.ImagePath);
+                    //Debug.Log(t.Furniture.Prototype.ImagePath);
                     GameObject furnObj = Instantiate(EmptyFurniturePrefab, obj.transform, false);
                     furnObj.GetComponent<SpriteRenderer>().sprite = s;
                     if(t.Furniture.Prototype.hasCol)

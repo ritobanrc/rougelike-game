@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceenSpawner : MonoBehaviour
+public class SceneSpawner : MonoBehaviour
 {
     private void Start()
     {
