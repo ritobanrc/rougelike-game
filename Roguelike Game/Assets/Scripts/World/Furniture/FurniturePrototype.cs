@@ -16,6 +16,7 @@ public class FurniturePrototype
     public Color32 LvlImgColor;
     public bool hasCol;
     public bool hasRb;
+    public string prefabPath;
 
     public FurniturePrototype(string name, string imagePath)
     {

@@ -39,8 +39,10 @@ public class FurnitureController : Singleton<FurnitureController>
             Color32 lvlImageColor32 = (Color32)lvlImageColor;
             // Furniture.Graphics.ImagePath - TODO: Handle more complicated graphics
             string imagePath = xmlNode.SelectSingleNode("Graphics").SelectSingleNode("ImagePath").InnerText;
+            string prefabPath = xmlNode.SelectSingleNode("Prefab").Attributes["src"].Value;
             FurniturePrototype prototype = new FurniturePrototype(name, imagePath);
             prototype.LvlImgColor = lvlImageColor32;
+            prototype.prefabPath = prefabPath;
             prototype.hasCol = hasCol;
             prototype.hasRb = hasRb;
 

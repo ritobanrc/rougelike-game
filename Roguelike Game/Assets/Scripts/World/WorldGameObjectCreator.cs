@@ -39,18 +39,25 @@ public class WorldGameObjectCreator : MonoBehaviour
                     //Debug.Log("Creating Furniture: " + t.Furniture.Name);
                     Sprite s = Resources.Load<Sprite>(t.Furniture.Prototype.ImagePath);
                     //Debug.Log(t.Furniture.Prototype.ImagePath);
-                    GameObject furnObj = Instantiate(EmptyFurniturePrefab, obj.transform, false);
-                    furnObj.GetComponent<SpriteRenderer>().sprite = s;
-                    if(t.Furniture.Prototype.hasCol)
+                    if (t.Furniture.Prototype.prefabPath == null)
                     {
-                        BoxCollider2D bc2d = obj.AddComponent<BoxCollider2D>();
+                        GameObject furnObj = Instantiate(EmptyFurniturePrefab, obj.transform, false);
+                        furnObj.GetComponent<SpriteRenderer>().sprite = s;
+                        if (t.Furniture.Prototype.hasCol)
+                        {
+                            BoxCollider2D bc2d = obj.AddComponent<BoxCollider2D>();
+                        }
+                        if (t.Furniture.Prototype.hasRb)
+                        {
+                            Rigidbody2D rb = obj.AddComponent<Rigidbody2D>();
+                            // Because this is furniture, we are assuming the rigidbody to be static. 
+                            rb.isKinematic = true;
+                            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                        }
                     }
-                    if (t.Furniture.Prototype.hasRb)
+                    else
                     {
-                        Rigidbody2D rb = obj.AddComponent<Rigidbody2D>();
-                        // Because this is furniture, we are assuming the rigidbody to be static. 
-                        rb.isKinematic = true;
-                        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                        Instantiate((GameObject)Resources.Load(t.Furniture.Prototype.prefabPath));
                     }
                 }
             }
