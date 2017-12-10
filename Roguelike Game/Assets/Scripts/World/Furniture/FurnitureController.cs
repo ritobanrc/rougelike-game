@@ -27,8 +27,8 @@ public class FurnitureController : Singleton<FurnitureController>
         if (filePath.Contains("://"))
             throw new XmlException("How the actual f*ck did you manage to run this on Web/Mobile/Not Standalone?");
         xmlDoc.Load(filePath);
-        foreach(XmlNode xmlNode in xmlDoc.DocumentElement)
-        {   
+        foreach (XmlNode xmlNode in xmlDoc.DocumentElement)
+        {
             /// TODO: This is not scalable! Is there a better way to do this?
             // For each furniture listed, get its information
             string name = xmlNode.Attributes["name"].Value;
@@ -39,7 +39,9 @@ public class FurnitureController : Singleton<FurnitureController>
             Color32 lvlImageColor32 = (Color32)lvlImageColor;
             // Furniture.Graphics.ImagePath - TODO: Handle more complicated graphics
             string imagePath = xmlNode.SelectSingleNode("Graphics").SelectSingleNode("ImagePath").InnerText;
-            string prefabPath = xmlNode.SelectSingleNode("Prefab").Attributes["src"].Value;
+            string prefabPath = "";
+            if (xmlNode.SelectSingleNode("Prefab") != null)
+                prefabPath = xmlNode.SelectSingleNode("Prefab").Attributes["src"].Value;
             FurniturePrototype prototype = new FurniturePrototype(name, imagePath);
             prototype.LvlImgColor = lvlImageColor32;
             prototype.prefabPath = prefabPath;
